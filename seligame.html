@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeliGame — Yayını Canlandır.</title>
+<meta name="description" content="TikTok LIVE yayıncıları için mod desteği, yayın araçları ve izleyici etkileşim platformu.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/seligame.css">
+</head>
+
+<body>
+
+<div class="grain"></div>
+
+<!-- ===== PRELOADER ===== -->
+<div class="preloader" id="preloader">
+  <div class="pre-grid"></div>
+  <div class="pre-corner tl"></div>
+  <div class="pre-corner tr"></div>
+  <div class="pre-corner bl"></div>
+  <div class="pre-corner br"></div>
+  <div class="pre-content">
+    <!-- 🖼️ logo.png — yatay logo görseli -->
+    <div class="pre-logo">
+      <img src="logo.png" alt="SeliGame" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+      <div class="pre-logo-fallback">
+        <span class="mark">S</span>
+        <span>SeliGame</span>
+      </div>
+    </div>
+    <div class="pre-slogan">
+      SeliGame ile yayınlarını<br>
+      <span class="accent">ileri taşı.</span>
+    </div>
+    <div class="pre-sub">Yükleniyor...</div>
+    <div class="pre-bar"><div class="pre-bar-fill" id="preBarFill"></div></div>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <a href="seligame.html" class="nav-logo">
+    <img src="logo.png" alt="SeliGame" class="nav-logo-img" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+    <span class="nav-logo-fallback">
+      <span class="nav-logo-mark">S</span>
+      <span>SeliGame
+        <span class="brand-tag">v1.0 · BETA</span>
+      </span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="seligame.html" class="active">Ana Sayfa</a></li>
+    <li><a href="#ozellikler">Özellikler</a></li>
+    <li><a href="#modlar">Modlar</a></li>
+    <li><a href="#indir">İndir</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="giris-yap.html" class="nav-login">Giriş Yap</a>
+    <a href="uye-ol.html" class="nav-signup">Üye Ol</a>
+  </div>
+</nav>
+
+<!-- ===== HERO (full-screen video) ===== -->
+<section class="hero">
+  <div class="hero-video-wrap" id="heroVideoWrap">
+    <!-- 🎬 kaos-hero.mp4 — hero arka plan videosu -->
+    <video autoplay muted loop playsinline preload="auto" id="heroVideo">
+      <source src="kaos-hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-fallback">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+        <polygon points="6 3 20 12 6 21 6 3" fill="rgba(255,46,184,0.3)" stroke="rgba(255,46,184,0.9)" stroke-width="1" stroke-linejoin="round"/>
+      </svg>
+      <span>Video yüklenemedi</span>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+
+  <div class="hero-content">
+    <p class="hero-slogan" id="heroSlogan">
+      Yayıncıya mod desteği, izleyiciye oyun.<br>
+      <span class="accent">Hep birlikte.</span>
+    </p>
+    <div class="hero-actions" id="heroActions">
+      <a href="#indir" class="btn primary">
+        <span>Hemen İndir</span>
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </a>
+      <a href="#modlar" class="btn">
+        <span>Modları Keşfet</span>
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M13 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Kaydır</span>
+    <svg viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M8 4v16M3 14l5 6 5-6"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item solid">GTA V<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item outline">MINECRAFT<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item solid">YAYIN MODU<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item outline">HEDİYE EFEKTİ<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item solid">OVERLAY<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item outline">TIKTOK LIVE<span class="marquee-divider">✦</span></div>
+    <!-- duplicate -->
+    <div class="marquee-item solid">GTA V<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item outline">MINECRAFT<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item solid">YAYIN MODU<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item outline">HEDİYE EFEKTİ<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item solid">OVERLAY<span class="marquee-divider">✦</span></div>
+    <div class="marquee-item outline">TIKTOK LIVE<span class="marquee-divider">✦</span></div>
+  </div>
+</div>
+
+<!-- ===== YAYIN ÖZELLİKLERİ ===== -->
+<section class="section features-section" id="ozellikler">
+  <div class="features-bg">
+    <div class="features-orb o1"></div>
+    <div class="features-orb o2"></div>
+  </div>
+  <div class="section-inner">
+    <!-- 🖼️ banner1.png — Yayın Araçları başlık görseli -->
+    <div class="banner-wrap" id="banner1Wrap">
+      <img src="banner1.png" alt="Sadece mod değil, komple yayın seti" class="banner-img" id="banner1" onload="this.classList.add('loaded')" onerror="this.classList.add('error')">
+      <div class="banner-shimmer"></div>
+      <div class="banner-fallback">
+        <div class="section-eyebrow"><span class="label pink">// YAYIN ARAÇLARI</span></div>
+        <h2 class="display h2 section-title">
+          Sadece mod değil,<br>
+          <span class="accent">komple yayın seti.</span>
+        </h2>
+        <p class="section-lead">
+          SeliGame yayıncıya tek pencerede mod yönetimi, izleyici etkileşim araçları,
+          hediye hedefi sistemi ve overlay tasarımları sunar. Yayın artık tek başına yapılmıyor.
+        </p>
+      </div>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card" data-card>
+        <div class="feature-head">
+          <span class="feature-num">F.01</span>
+          <span class="feature-tag">YAYIN İÇİ</span>
+        </div>
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="24" r="18"/>
+          <circle cx="24" cy="24" r="12"/>
+          <circle cx="24" cy="24" r="6" fill="currentColor"/>
+          <path d="M24 6v6M24 36v6M6 24h6M36 24h6"/>
+        </svg>
+        <h3 class="feature-title">Hediye <span class="accent">Hedef Sistemi</span></h3>
+        <p class="feature-body">
+          İzleyici hediyeleri yüzdelik dolan barlara dönüşür. Hedef tamamlanınca özel event tetiklenir —
+          TNT yağmuru, boss spawn, karakter dönüşümü.
+        </p>
+        <div class="gift-progress-demo">
+          <div class="gift-progress-row">
+            <div class="gift-progress-label">
+              <span class="name">🌹 1.000 Like → TNT Yağmuru</span>
+              <span class="pct">73%</span>
+            </div>
+            <div class="gift-progress-bar"><div class="gift-progress-fill" style="width:73%"></div></div>
+          </div>
+          <div class="gift-progress-row">
+            <div class="gift-progress-label">
+              <span class="name">💎 50 Elmas → Boss Spawn</span>
+              <span class="pct">42%</span>
+            </div>
+            <div class="gift-progress-bar"><div class="gift-progress-fill" style="width:42%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card" data-card>
+        <div class="feature-head">
+          <span class="feature-num">F.02</span>
+          <span class="feature-tag">ALERT</span>
+        </div>
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M36 18a12 12 0 10-24 0c0 14-6 18-6 18h36s-6-4-6-18"/>
+          <path d="M20 42a4 4 0 008 0"/>
+        </svg>
+        <h3 class="feature-title">Yayın <span class="accent">Bildirimleri</span></h3>
+        <p class="feature-body">
+          Yeni takipçi, hediye, milestone — özelleştirilebilir ekran alert'leri ile yayını canlı tut.
+          Ses + görsel efekt, tam markaya uygun tasarım.
+        </p>
+        <div class="notif-demo">
+          <div class="notif-row">
+            <span class="ico">🎁</span>
+            <span class="txt"><span class="user">@miko_5</span> 🦁 Aslan hediyesi gönderdi</span>
+          </div>
+          <div class="notif-row">
+            <span class="ico">💜</span>
+            <span class="txt"><span class="user">@neon_arc</span> yeni takipçin oldu</span>
+          </div>
+          <div class="notif-row">
+            <span class="ico">🎯</span>
+            <span class="txt">Milestone: 10.000 izleyici aşıldı</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card" data-card>
+        <div class="feature-head">
+          <span class="feature-num">F.03</span>
+          <span class="feature-tag">GÖRSEL</span>
+        </div>
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="6" y="8" width="36" height="24" rx="2"/>
+          <rect x="10" y="12" width="14" height="16"/>
+          <rect x="28" y="12" width="10" height="6"/>
+          <rect x="28" y="22" width="10" height="6"/>
+          <path d="M18 38h12M22 32v6M26 32v6"/>
+        </svg>
+        <h3 class="feature-title">Overlay <span class="accent">Tasarımları</span></h3>
+        <p class="feature-body">
+          Webcam çerçevesi, chat kutusu, donation tracker, gift counter — 50+ hazır şablon
+          veya drag-drop editör ile tamamen özel. Yayın stiline uygun.
+        </p>
+      </div>
+
+      <div class="feature-card" data-card>
+        <div class="feature-head">
+          <span class="feature-num">F.04</span>
+          <span class="feature-tag">REAL-TIME</span>
+        </div>
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M26 4l-14 22h10l-2 18 14-22h-10l2-18z" fill="currentColor" fill-opacity="0.2"/>
+        </svg>
+        <h3 class="feature-title">Anlık <span class="accent">Gift Efektleri</span></h3>
+        <p class="feature-body">
+          Her hediye, ekran efektine veya oyun olayına dönüşür. Gül → ateş halkası,
+          aslan → tank spawn, elmas → karakter dönüşümü. 350+ önceden tanımlı tetikleyici.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODLAR (unified) ===== -->
+<section class="section mods-section" id="modlar">
+  <div class="section-inner">
+    <!-- 🖼️ banner2.png — Mod Kütüphanesi başlık görseli -->
+    <div class="banner-wrap" id="banner2Wrap">
+      <img src="banner2.png" alt="Tek kütüphane, tüm oyunlar" class="banner-img" id="banner2" onload="this.classList.add('loaded')" onerror="this.classList.add('error')">
+      <div class="banner-shimmer"></div>
+      <div class="banner-fallback">
+        <div class="section-eyebrow"><span class="label pink">// MOD KÜTÜPHANESİ</span></div>
+        <h2 class="display h2 section-title">
+          Tek kütüphane,<br>
+          <span class="accent">tüm oyunlar.</span>
+        </h2>
+        <p class="section-lead">
+          GTA V, Minecraft ve daha fazlası — her oyuna özel TikTok Live entegrasyonlu modlar.
+          Tek tıkla preset yükle, yayına gir.
+        </p>
+      </div>
+    </div>
+
+    <div class="mods-grid">
+
+      <div class="mod-card">
+        <div class="mod-card-head">
+          <span class="feature-num">MOD.01</span>
+          <span class="mod-game gta">GTA V</span>
+        </div>
+        <h3 class="mod-name">Chaos <span class="accent">Mod V</span></h3>
+        <p class="mod-desc">
+          350+ random chaos efekti. Like, follow, hediye — her TikTok eylemi farklı bir kaos tetikler.
+          Araba yağmuru, yer çekimi kapalı, NPC saldırısı.
+        </p>
+        <div class="mod-meta">350+ EFEKT · <span class="accent">REAL-TIME</span></div>
+      </div>
+
+      <div class="mod-card">
+        <div class="mod-card-head">
+          <span class="feature-num">MOD.02</span>
+          <span class="mod-game mc">MINECRAFT</span>
+        </div>
+        <h3 class="mod-name">TNT Coin <span class="accent">Challenge</span></h3>
+        <p class="mod-desc">
+          11×11×9 bedrock kutusunu blok ile doldur. İzleyiciler TNT gönderir, mob spawn olur,
+          envanterin silinir. Klasik Streamer vs Viewer.
+        </p>
+        <div class="mod-meta">1.089 BLOK · <span class="accent">VIEWER vs STREAMER</span></div>
+      </div>
+
+      <div class="mod-card">
+        <div class="mod-card-head">
+          <span class="feature-num">MOD.03</span>
+          <span class="mod-game gta">GTA V</span>
+        </div>
+        <h3 class="mod-name">KOTH <span class="accent">King of the Hill</span></h3>
+        <p class="mod-desc">
+          Yokuşa tırman, izleyiciler engelleri yaratır. Her hediye yola yeni bir araç, kamyon
+          veya helikopter atar. Düşersen baştan.
+        </p>
+        <div class="mod-meta">RAMP PARKOUR · <span class="accent">VIEWER OBSTACLES</span></div>
+      </div>
+
+      <div class="mod-card">
+        <div class="mod-card-head">
+          <span class="feature-num">MOD.04</span>
+          <span class="mod-game mc">MINECRAFT</span>
+        </div>
+        <h3 class="mod-name">Block <span class="accent">Boss</span></h3>
+        <p class="mod-desc">
+          İzleyici-kontrollü boss arenası. Viewer'lar boss'un attack pattern'ini seçer,
+          sen savaşırsın. Gönderenin TikTok ismi boss üstünde yazar.
+        </p>
+        <div class="mod-meta">BOSS FIGHT · <span class="accent">VIEWER CONTROLLED</span></div>
+      </div>
+
+      <div class="mod-card">
+        <div class="mod-card-head">
+          <span class="feature-num">MOD.05</span>
+          <span class="mod-game gta">GTA V</span>
+        </div>
+        <h3 class="mod-name">Banka & <span class="accent">Restoran Sim</span></h3>
+        <p class="mod-desc">
+          Bankayı yönet, müşteri çağır, parayı içeri-dışarı sok. Restoran modunda: kapı aç-kapa,
+          kir spawn. Donor isimleri NPC üzerinde görünür.
+        </p>
+        <div class="mod-meta">SIMULATION · <span class="accent">DONOR NAMES</span></div>
+      </div>
+
+      <div class="mod-card">
+        <div class="mod-card-head">
+          <span class="feature-num">MOD.06</span>
+          <span class="mod-game multi">ÇOKLU OYUN</span>
+        </div>
+        <h3 class="mod-name">Random <span class="accent">Sabotaj</span></h3>
+        <p class="mod-desc">
+          Envanteri sil, oyuncuyu dondur, görüş kapat, dili değiştir. 100+ random efekt
+          birden fazla oyun için. Viewer ne isterse o olur.
+        </p>
+        <div class="mod-meta">100+ EFEKT · <span class="accent">GTA + MINECRAFT</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== NASIL ÇALIŞIR ===== -->
+<section class="section how-section" id="nasil">
+  <div class="section-inner">
+    <!-- 🖼️ banner3.png — Kurulum başlık görseli -->
+    <div class="banner-wrap" id="banner3Wrap">
+      <img src="banner3.png" alt="3 adım, 60 saniye" class="banner-img" id="banner3" onload="this.classList.add('loaded')" onerror="this.classList.add('error')">
+      <div class="banner-shimmer"></div>
+      <div class="banner-fallback">
+        <div class="section-eyebrow"><span class="label pink">// KURULUM</span></div>
+        <h2 class="display h2 section-title">
+          3 adım,<br>
+          <span class="accent">60 saniye.</span>
+        </h2>
+        <p class="section-lead">
+          Karmaşık konfigürasyon yok. TikTok Live Studio izninle hemen başlarsın.
+          SeliGame indir, kullanıcı adını gir, oyununu seç, yayına gir.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps-row">
+      <div class="step fade-up">
+        <div class="step-num">01</div>
+        <h3 class="step-title">İndir</h3>
+        <p class="step-desc">
+          Windows için SeliGame.exe'yi indir. 48 MB, 30 saniyede kurulur. Admin yetkisi gerekmez.
+        </p>
+        <div class="step-meta">▸ WINDOWS 10/11 · ÜCRETSİZ</div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Bağla</h3>
+        <p class="step-desc">
+          TikTok kullanıcı adını gir, oyununu seç. Preset'i tek tıkla aktif et —
+          mod, overlay ve gift trigger'lar otomatik kurulur.
+        </p>
+        <div class="step-meta">▸ TIKTOK + GAME PRESET</div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Yayınla</h3>
+        <p class="step-desc">
+          Live aç. Hediyeler artık olaylara dönüşür, hedef barları dolar,
+          overlay'ler canlı bildirim verir.
+        </p>
+        <div class="step-meta">▸ GO LIVE · REAL-TIME</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-cell">
+      <div class="stat-num" data-counter="350" data-suffix="+">0</div>
+      <div class="stat-label">Chaos Efekti</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num" data-counter="12" data-suffix="">0</div>
+      <div class="stat-label">Oyun Desteği</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num" data-counter="84" data-suffix="K">0</div>
+      <div class="stat-label">Aktif Yayıncı</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num" data-counter="2.4" data-suffix="M">0</div>
+      <div class="stat-label">Aylık İzleyici</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOWNLOAD ===== -->
+<section class="download-section" id="indir">
+  <div class="download-grid-bg"></div>
+  <div class="download-spot"></div>
+  <div class="download-wrap">
+    <div class="download-eyebrow"><span class="label pink">// HAZIR MISIN?</span></div>
+    <h2 class="display h2 download-title fade-up">
+      İndir.<br>
+      <span class="gradient-text">Yayın başlasın.</span>
+    </h2>
+    <p class="download-sub fade-up">
+      Ücretsiz beta. Reklam yok. TikTok kullanıcı adını gir, oyununu seç, yayına gir.
+    </p>
+    <div class="download-cards">
+      <a href="#" class="download-card">
+        <div class="download-card-head">
+          <svg class="download-card-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+          </svg>
+          <div>
+            <div class="download-card-name">Windows</div>
+            <div class="download-card-platform">v1.0.4 · 64-BIT</div>
+          </div>
+        </div>
+        <div class="download-card-details">
+          <div class="download-detail"><span class="label-sm">BOYUT</span>48 MB</div>
+          <div class="download-detail"><span class="label-sm">KURULUM</span>~30 sn</div>
+          <div class="download-detail"><span class="label-sm">SİSTEM</span>Win 10/11</div>
+          <div class="download-detail"><span class="label-sm">FİYAT</span>ÜCRETSİZ</div>
+        </div>
+        <div class="download-card-action">
+          <span>SeliGame.exe İndir</span>
+          <svg class="download-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </a>
+      <a href="#" class="download-card">
+        <div class="download-card-head">
+          <svg class="download-card-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+          </svg>
+          <div>
+            <div class="download-card-name">iOS Companion</div>
+            <div class="download-card-platform">v1.0.4 · TestFlight</div>
+          </div>
+        </div>
+        <div class="download-card-details">
+          <div class="download-detail"><span class="label-sm">BOYUT</span>64 MB</div>
+          <div class="download-detail"><span class="label-sm">TÜR</span>Companion</div>
+          <div class="download-detail"><span class="label-sm">SİSTEM</span>iOS 15+</div>
+          <div class="download-detail"><span class="label-sm">FİYAT</span>ÜCRETSİZ</div>
+        </div>
+        <div class="download-card-action">
+          <span>TestFlight'tan İndir</span>
+          <svg class="download-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-mark">
+        <span class="icon">S</span>
+        <div class="footer-brand-name">Seli<span class="accent">Game</span></div>
+      </div>
+      <p class="footer-tag">
+        TikTok LIVE için interaktif oyun modu, yayın araçları ve izleyici etkileşim platformu.
+        Mod desteği, overlay tasarımları, hediye hedef sistemi — hepsi tek pencerede.
+      </p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Ürün</div>
+      <ul>
+        <li><a href="#ozellikler">Özellikler</a></li>
+        <li><a href="#modlar">Modlar</a></li>
+        <li><a href="#indir">İndir</a></li>
+        <li><a href="#nasil">Nasıl Çalışır</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Hesap</div>
+      <ul>
+        <li><a href="giris-yap.html">Giriş Yap</a></li>
+        <li><a href="uye-ol.html">Üye Ol</a></li>
+        <li><a href="#">Şifremi Unuttum</a></li>
+        <li><a href="#">Profil</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-head">Destek</div>
+      <ul>
+        <li><a href="#">Discord</a></li>
+        <li><a href="#">SSS</a></li>
+        <li><a href="#">İletişim</a></li>
+        <li><a href="#">Gizlilik</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-text">© 2026 SeliGame · Tüm hakları saklıdır</div>
+    <div class="footer-bottom-text">Yayıncılar için, yayıncılarla yapıldı</div>
+  </div>
+</footer>
+
+
+<!-- ===== SCRIPTS ===== -->
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="js/seligame.js"></script>
+
+</body>
+</html>
