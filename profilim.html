@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profilim — SeliGame</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/giris-yap.css">
+<link rel="stylesheet" href="css/profilim.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="ambient">
+  <div class="amb-grid"></div>
+  <div class="amb-orb o1"></div>
+  <div class="amb-orb o2"></div>
+</div>
+
+<nav class="top-nav">
+  <a href="seligame.html" class="brand">
+    <span class="brand-mark">S</span>
+    <span>SeliGame</span>
+  </a>
+  <div class="nav-actions">
+    <a href="seligame.html" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Ana Sayfa
+    </a>
+    <button id="logoutBtn" class="back-link" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+      </svg>
+      Çıkış
+    </button>
+  </div>
+</nav>
+
+<div class="auth-wrap profile-wrap">
+  <div class="auth-card profile-card">
+    <div class="auth-eyebrow">// HESAP</div>
+    <h1 class="auth-title">Profilim</h1>
+    <p class="auth-sub">Kişisel bilgilerini ve TikTok hesabını buradan yönet. Değişiklikler hemen kaydedilir.</p>
+
+    <!-- Hero -->
+    <div class="profile-hero">
+      <div class="profile-avatar" id="profile-avatar">?</div>
+      <div class="profile-meta">
+        <div class="profile-name" id="profile-name">—</div>
+        <div class="profile-email" id="profile-email">—</div>
+        <div class="profile-pills">
+          <span id="profile-role-pill" class="pill" style="display:none">ADMIN</span>
+          <span id="profile-plan-pill" class="pill pill-muted">Ücretsiz</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="profile-msg" class="auth-error" style="display:none"></div>
+    <div id="profile-ok" class="auth-success" style="display:none"></div>
+
+    <!-- Profile form -->
+    <form class="form" id="profileForm" novalidate>
+      <div class="field-grid">
+        <div class="field">
+          <label class="field-label" for="pf-username">Kullanıcı Adı</label>
+          <input id="pf-username" type="text" class="field-input" required>
+        </div>
+        <div class="field">
+          <label class="field-label" for="pf-fullname">Ad Soyad</label>
+          <input id="pf-fullname" type="text" class="field-input" placeholder="Ad Soyad">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="pf-tiktok">TikTok Kullanıcı Adı</label>
+        <input id="pf-tiktok" type="text" class="field-input" placeholder="@kullaniciadi">
+        <span class="field-hint">TikTok Live entegrasyonu için.</span>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label class="field-label" for="pf-phone">Telefon</label>
+          <input id="pf-phone" type="tel" class="field-input" placeholder="+90 ...">
+        </div>
+        <div class="field">
+          <label class="field-label" for="pf-birth">Doğum Tarihi</label>
+          <input id="pf-birth" type="date" class="field-input">
+        </div>
+      </div>
+
+      <button type="submit" id="profile-submit" class="submit-btn">Bilgileri Kaydet</button>
+    </form>
+
+    <div class="divider">şifre</div>
+
+    <!-- Password form -->
+    <form class="form" id="passwordForm" novalidate>
+      <div class="field-grid">
+        <div class="field">
+          <label class="field-label" for="pw-current">Mevcut Şifre</label>
+          <input id="pw-current" type="password" class="field-input" autocomplete="current-password" required>
+        </div>
+        <div class="field">
+          <label class="field-label" for="pw-new">Yeni Şifre</label>
+          <input id="pw-new" type="password" class="field-input" autocomplete="new-password" required>
+        </div>
+      </div>
+      <button type="submit" id="password-submit" class="submit-btn submit-btn-ghost">Şifreyi Güncelle</button>
+    </form>
+
+    <!-- Quick links -->
+    <div class="profile-links">
+      <a href="seligame.html#mods" class="profile-link">
+        🎮 <span>Mod kütüphanesini gez</span>
+      </a>
+      <a href="/downloads/SeliGames%20Setup%201.0.0.exe" class="profile-link">
+        🪟 <span>Windows uygulamasını indir</span>
+      </a>
+      <a href="/downloads/SeliGames-1.0.0-arm64.dmg" class="profile-link">
+        🍎 <span>macOS uygulamasını indir</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/profilim.js"></script>
+
+</body>
+</html>

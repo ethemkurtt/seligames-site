@@ -1370,3 +1370,35 @@ img, svg, video { display: block; max-width: 100%; }
   transform: translateY(40px);
   will-change: transform, opacity;
 }
+
+/* ===== Dynamic mod-card additions (cover image + skeleton) ===== */
+.mod-card-img {
+  width: calc(100% + 56px);
+  margin: -28px -28px 18px -28px;
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.mod-card-skeleton {
+  animation: skel 1.2s ease-in-out infinite;
+  opacity: 0.55;
+}
+.mod-card-skeleton .mod-name,
+.mod-card-skeleton .mod-desc,
+.mod-card-skeleton .mod-meta {
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  color: transparent;
+  display: block;
+}
+.mod-card-skeleton .mod-name { height: 22px; margin-bottom: 10px; }
+.mod-card-skeleton .mod-desc { height: 14px; margin-bottom: 8px; width: 88%; }
+.mod-card-skeleton .mod-meta { height: 12px; width: 60%; }
+@keyframes skel {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.7; }
+}

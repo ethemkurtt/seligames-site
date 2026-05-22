@@ -42,15 +42,15 @@
       TikTok kullanıcı adın veya e-posta adresinle giriş yap. Yayını kaldığın yerden devam ettir.
     </p>
 
-    <form class="form" id="loginForm">
+    <form class="form" id="loginForm" novalidate>
       <div class="field">
-        <label class="field-label">TikTok Kullanıcı Adı veya E-posta</label>
-        <input type="text" class="field-input" placeholder="@kullaniciadi veya mail@ornek.com" required>
+        <label class="field-label" for="login-email">E-posta</label>
+        <input type="email" id="login-email" class="field-input" placeholder="mail@ornek.com" autocomplete="email" required>
       </div>
 
       <div class="field">
-        <label class="field-label">Şifre</label>
-        <input type="password" class="field-input" placeholder="••••••••" required>
+        <label class="field-label" for="login-password">Şifre</label>
+        <input type="password" id="login-password" class="field-input" placeholder="••••••••" autocomplete="current-password" required>
       </div>
 
       <div class="field-row">
@@ -61,7 +61,8 @@
         <a href="#" class="forgot-link">Şifremi unuttum</a>
       </div>
 
-      <button type="submit" class="submit-btn">Giriş Yap</button>
+      <div id="login-error" class="auth-error" style="display:none"></div>
+      <button type="submit" id="login-submit" class="submit-btn">Giriş Yap</button>
     </form>
 
     <div class="divider">veya</div>
@@ -91,6 +92,7 @@
 </div>
 
 
+<script src="js/api.js"></script>
 <script src="js/giris-yap.js"></script>
 
 </body>

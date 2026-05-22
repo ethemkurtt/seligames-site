@@ -49,43 +49,44 @@
       <div class="benefit-row"><span class="check">✓</span> Topluluk Discord + öncelikli destek</div>
     </div>
 
-    <form class="form" id="signupForm">
+    <form class="form" id="signupForm" novalidate>
       <div class="field">
-        <label class="field-label">Kullanıcı Adı</label>
-        <input type="text" class="field-input" placeholder="seligamer" required>
+        <label class="field-label" for="su-username">Kullanıcı Adı</label>
+        <input type="text" id="su-username" class="field-input" placeholder="seligamer" autocomplete="username" required>
         <span class="field-hint">3-20 karakter, harf ve rakam</span>
       </div>
 
       <div class="field">
-        <label class="field-label">E-posta</label>
-        <input type="email" class="field-input" placeholder="mail@ornek.com" required>
+        <label class="field-label" for="su-email">E-posta</label>
+        <input type="email" id="su-email" class="field-input" placeholder="mail@ornek.com" autocomplete="email" required>
       </div>
 
       <div class="field">
-        <label class="field-label">TikTok Kullanıcı Adı</label>
-        <input type="text" class="field-input" placeholder="@kullaniciadi" required>
-        <span class="field-hint">TikTok Live entegrasyonu için</span>
+        <label class="field-label" for="su-tiktok">TikTok Kullanıcı Adı</label>
+        <input type="text" id="su-tiktok" class="field-input" placeholder="@kullaniciadi">
+        <span class="field-hint">İsteğe bağlı — TikTok Live entegrasyonu için</span>
       </div>
 
       <div class="field-grid">
         <div class="field">
-          <label class="field-label">Şifre</label>
-          <input type="password" class="field-input" placeholder="••••••••" required>
+          <label class="field-label" for="su-password">Şifre</label>
+          <input type="password" id="su-password" class="field-input" placeholder="••••••••" autocomplete="new-password" required>
         </div>
         <div class="field">
-          <label class="field-label">Tekrar</label>
-          <input type="password" class="field-input" placeholder="••••••••" required>
+          <label class="field-label" for="su-password2">Tekrar</label>
+          <input type="password" id="su-password2" class="field-input" placeholder="••••••••" autocomplete="new-password" required>
         </div>
       </div>
 
       <label class="checkbox-row">
-        <input type="checkbox" required>
+        <input type="checkbox" id="su-terms" required>
         <span class="checkbox-row-text">
           <a href="#">Kullanım Koşulları</a> ve <a href="#">Gizlilik Politikası</a>'nı okudum, kabul ediyorum.
         </span>
       </label>
 
-      <button type="submit" class="submit-btn">Üye Ol</button>
+      <div id="signup-error" class="auth-error" style="display:none"></div>
+      <button type="submit" id="signup-submit" class="submit-btn">Üye Ol</button>
     </form>
 
     <div class="divider">veya</div>
@@ -115,6 +116,7 @@
 </div>
 
 
+<script src="js/api.js"></script>
 <script src="js/uye-ol.js"></script>
 
 </body>
