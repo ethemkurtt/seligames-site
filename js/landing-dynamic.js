@@ -105,12 +105,42 @@
     `;
   }
 
+  async function hydrateStats(modCount) {
+    // Live counts for the stats strip. Override the data-counter the
+    // ScrollTrigger animation reads + write the final text in case the
+    // user has already scrolled past the section.
+    const sm = document.getElementById('statMods');
+    if (sm && typeof modCount === 'number') {
+      sm.dataset.counter = String(modCount);
+      // If the counter has already animated to its old hardcoded value,
+      // overwrite it. ScrollTrigger 'once: true' means it won't replay.
+      sm.textContent = String(modCount);
+    }
+    // Streamer count needs an admin endpoint; do a best-effort fetch and
+    // silently leave the default (1) if not reachable / not allowed.
+    try {
+      const res = await fetch('/api/admin/users', {
+        headers: window.sgApi.getToken() ? { Authorization: 'Bearer ' + window.sgApi.getToken() } : {},
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const list = Array.isArray(data) ? data : (data.users || data.items || []);
+        const ss = document.getElementById('statStreamers');
+        if (ss && list.length > 0) {
+          ss.dataset.counter = String(list.length);
+          ss.textContent = String(list.length);
+        }
+      }
+    } catch (e) { /* silent */ }
+  }
+
   async function hydrateMods() {
     const grid = document.getElementById('modsGrid');
     if (!grid) return;
     try {
       const all = await window.sgApi.listMods();
       const list = (all || []).filter((m) => m && m.isActive !== false);
+      hydrateStats(list.length);
       // Best-effort sort: ones with uploaded files first, then newest.
       list.sort((a, b) => {
         const ax = a.fileUploadedAt ? 1 : 0;

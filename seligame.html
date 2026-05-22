@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/seligame.css">
 </head>
@@ -85,10 +85,11 @@
   <div class="hero-vignette"></div>
 
   <div class="hero-content">
-    <p class="hero-slogan" id="heroSlogan">
-      Yayıncıya mod desteği, izleyiciye oyun.<br>
-      <span class="accent">Hep birlikte.</span>
+    <p class="hero-slogan hero-slogan-sharp" id="heroSlogan">
+      HEDİYE GELİR.<br>
+      <span class="accent">OYUN DEĞİŞİR.</span>
     </p>
+    <p class="hero-subslogan">Yayın artık tek yönlü değil — izleyici tetikler, oyun tepki verir.</p>
     <div class="hero-actions" id="heroActions">
       <a href="#indir" class="btn primary">
         <span>Hemen İndir</span>
@@ -346,24 +347,24 @@
   </div>
 </section>
 
-<!-- ===== STATS ===== -->
+<!-- ===== STATS (live + honest) ===== -->
 <section class="stats-section">
   <div class="stats-grid">
     <div class="stat-cell">
-      <div class="stat-num" data-counter="350" data-suffix="+">0</div>
-      <div class="stat-label">Chaos Efekti</div>
+      <div class="stat-num" id="statMods" data-counter="5" data-suffix="">5</div>
+      <div class="stat-label">Hazır Mod</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num" data-counter="12" data-suffix="">0</div>
-      <div class="stat-label">Oyun Desteği</div>
+      <div class="stat-num" data-counter="123" data-suffix="">0</div>
+      <div class="stat-label">TikTok Hediyesi</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num" data-counter="84" data-suffix="K">0</div>
-      <div class="stat-label">Aktif Yayıncı</div>
+      <div class="stat-num" data-counter="9" data-suffix="">0</div>
+      <div class="stat-label">Overlay Tipi</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num" data-counter="2.4" data-suffix="M">0</div>
-      <div class="stat-label">Aylık İzleyici</div>
+      <div class="stat-num" id="statStreamers" data-counter="1" data-suffix="">1</div>
+      <div class="stat-label">Kayıtlı Yayıncı</div>
     </div>
   </div>
 </section>
@@ -460,8 +461,12 @@
   <div class="footer-top">
     <div>
       <div class="footer-brand-mark">
-        <span class="icon">S</span>
-        <div class="footer-brand-name">Seli<span class="accent">Game</span></div>
+        <img src="logo.png" alt="SeliGame" class="footer-logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="footer-brand-fallback" style="display:none">
+          <span class="icon">S</span>
+          <div class="footer-brand-name">Seli<span class="accent">Game</span></div>
+        </div>
       </div>
       <p class="footer-tag">
         TikTok LIVE için interaktif oyun modu, yayın araçları ve izleyici etkileşim platformu.

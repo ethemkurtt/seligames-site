@@ -548,12 +548,45 @@ img, svg, video { display: block; max-width: 100%; }
   max-width: 720px;
   opacity: 0;
 }
+/* Sharp variant: condensed, all-caps, oversized. Anton has a single bold
+   weight and a tall narrow x-height that reads like a movie title. */
+.hero-slogan-sharp {
+  font-family: 'Anton', 'Bebas Neue', 'Bricolage Grotesque', sans-serif;
+  font-weight: 400;
+  font-variation-settings: normal;
+  font-size: clamp(54px, 9vw, 128px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  max-width: 920px;
+  margin: 0 0 14px;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.45);
+}
+.hero-subslogan {
+  font-family: 'Space Grotesk', 'Bricolage Grotesque', sans-serif;
+  font-weight: 500;
+  font-size: clamp(14px, 1.4vw, 18px);
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.005em;
+  margin: 0 0 26px;
+  max-width: 600px;
+  opacity: 0;
+  animation: subslogan-in 0.8s ease 0.6s forwards;
+}
+@keyframes subslogan-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .hero-slogan .accent {
   background: linear-gradient(135deg, var(--m-300), var(--m-500));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-style: italic;
+  font-style: normal;
+}
+.hero-slogan-sharp .accent {
+  /* Stronger gradient + a subtle glow for the all-caps title */
+  filter: drop-shadow(0 0 24px rgba(255, 46, 184, 0.35));
 }
 
 .hero-actions {
@@ -1417,4 +1450,18 @@ img, svg, video { display: block; max-width: 100%; }
 @keyframes skel {
   0%, 100% { opacity: 0.45; }
   50% { opacity: 0.7; }
+}
+
+/* Footer brand: real logo image (with text-fallback below) */
+.footer-logo-img {
+  height: 56px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 16px rgba(255, 46, 184, 0.25));
+  margin-bottom: 12px;
+}
+.footer-brand-fallback {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px;
 }
