@@ -13,7 +13,9 @@
     if (nav) {
       if (authed) {
         const name = (user && (user.username || user.email)) || 'Profilim';
+        const isAdmin = user && user.role === 'admin';
         nav.innerHTML = `
+          ${isAdmin ? '<a href="admin.html" class="nav-login" style="color:#ff2eb8">⚡ Admin</a>' : ''}
           <a href="profilim.html" class="nav-login" title="${escapeAttr(user?.email || '')}">${escapeHtml(name)}</a>
           <a href="#" class="nav-signup" id="navLogout">Çıkış</a>
         `;
@@ -72,11 +74,26 @@
     const num = String(i + 1).padStart(2, '0');
     const imgUrl = m.imageUrl ? window.sgApi.resolveImg(m.imageUrl, m.updatedAt) : '';
     const desc = (m.description || 'Bu mod için açıklama henüz eklenmedi.').trim();
+    // Two layouts: with-cover (image strip on top, body padded) and
+    // without-cover (legacy card padding). Avoids margin-collapse hacks.
+    if (imgUrl) {
+      return `
+        <div class="mod-card mod-card-with-img">
+          <div class="mod-card-img" style="background-image:url('${escapeAttr(imgUrl)}')"></div>
+          <div class="mod-card-body">
+            <div class="mod-card-head">
+              <span class="feature-num">MOD.${num}</span>
+              <span class="mod-game ${tag.cls}">${escapeHtml(tag.label)}</span>
+            </div>
+            <h3 class="mod-name">${escapeHtml(m.title || '—')}</h3>
+            <p class="mod-desc">${escapeHtml(truncate(desc, 220))}</p>
+            <div class="mod-meta">${escapeHtml(modMetaLine(m))} · <span class="accent">${m.fileUploadedAt ? 'HAZIR' : 'YAKINDA'}</span></div>
+          </div>
+        </div>
+      `;
+    }
     return `
       <div class="mod-card">
-        ${imgUrl ? `
-          <div class="mod-card-img" style="background-image:url('${escapeAttr(imgUrl)}')"></div>
-        ` : ''}
         <div class="mod-card-head">
           <span class="feature-num">MOD.${num}</span>
           <span class="mod-game ${tag.cls}">${escapeHtml(tag.label)}</span>

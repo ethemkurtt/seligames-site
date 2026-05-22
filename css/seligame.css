@@ -136,10 +136,17 @@ img, svg, video { display: block; max-width: 100%; }
   max-height: 120px;
   object-fit: contain;
   filter: drop-shadow(0 0 24px rgba(255, 46, 184, 0.4)) drop-shadow(0 0 48px rgba(168, 85, 247, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-/* Fallback if logo.png missing */
+.pre-logo img.loaded { opacity: 1; }
+/* Fallback hidden by default — only shown if the <img onerror> handler
+   surfaces it. This stops the "S SeliGame" letter-block from flashing
+   on top of the real logo during the 100 ms or so it takes the 17 MB
+   logo.png to decode. */
 .pre-logo-fallback {
-  display: flex; align-items: center; gap: 16px;
+  display: none;
+  align-items: center; gap: 16px;
   padding: 16px 28px;
   background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(255, 46, 184, 0.15));
   border: 1px solid var(--line-bright);
@@ -150,6 +157,7 @@ img, svg, video { display: block; max-width: 100%; }
   color: var(--fg);
   letter-spacing: -0.02em;
 }
+.pre-logo.show-fallback .pre-logo-fallback { display: flex; }
 .pre-logo-fallback .mark {
   width: 48px; height: 48px;
   border-radius: 12px;
@@ -158,7 +166,6 @@ img, svg, video { display: block; max-width: 100%; }
   font-size: 24px;
   box-shadow: 0 0 16px rgba(255, 46, 184, 0.5);
 }
-.pre-logo img.loaded ~ .pre-logo-fallback { display: none; }
 
 @keyframes logoFloat {
   0%, 100% { transform: translateY(0); }
@@ -1372,16 +1379,25 @@ img, svg, video { display: block; max-width: 100%; }
 }
 
 /* ===== Dynamic mod-card additions (cover image + skeleton) ===== */
-.mod-card-img {
-  width: calc(100% + 56px);
-  margin: -28px -28px 18px -28px;
-  height: 140px;
+.mod-card-with-img {
+  padding: 0 !important;
+  overflow: hidden;
+}
+.mod-card-with-img .mod-card-img {
+  width: 100%;
+  height: 160px;
   background-size: cover;
   background-position: center;
   background-color: rgba(255,255,255,0.04);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
+  flex-shrink: 0;
+}
+.mod-card-with-img .mod-card-body {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
 }
 .mod-card-skeleton {
   animation: skel 1.2s ease-in-out infinite;

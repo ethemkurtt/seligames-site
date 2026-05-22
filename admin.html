@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin · SeliGame</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<!-- Gate (shown while we verify the token) -->
+<div class="admin-gate" id="gate">
+  <div class="gate-spinner"></div>
+  <div class="gate-label">Yetki doğrulanıyor…</div>
+</div>
+
+<!-- Main shell (revealed once verified) -->
+<div class="admin-shell" id="shell" hidden>
+  <header class="admin-top">
+    <div class="admin-brand">
+      <span class="brand-mark">S</span>
+      <div>
+        <div class="brand-name">SeliGame · <span class="accent-pink">Admin</span></div>
+        <div class="brand-tag">v1.0 · BETA</div>
+      </div>
+    </div>
+    <nav class="admin-tabs">
+      <button class="admin-tab is-active" data-tab="mods">🎮 Modlar</button>
+      <button class="admin-tab" data-tab="users">👥 Kullanıcılar</button>
+      <button class="admin-tab" data-tab="stats">📊 İstatistik</button>
+    </nav>
+    <div class="admin-actions">
+      <a href="seligame.html" class="admin-link">← Siteye Dön</a>
+      <button class="admin-link admin-logout" id="adminLogout">Çıkış</button>
+    </div>
+  </header>
+
+  <!-- ───── MODS TAB ───── -->
+  <section class="admin-panel is-active" data-panel="mods">
+    <div class="panel-head">
+      <div>
+        <h1 class="panel-title">Mod Yönetimi</h1>
+        <p class="panel-sub"><span id="modCount">0</span> mod kayıtlı · ZIP + görsel yükleme · gerçek zamanlı.</p>
+      </div>
+      <button class="btn-primary" id="newModBtn">+ Yeni Mod</button>
+    </div>
+
+    <div class="mod-grid" id="adminModGrid">
+      <div class="mod-tile-skel"></div>
+      <div class="mod-tile-skel"></div>
+      <div class="mod-tile-skel"></div>
+    </div>
+  </section>
+
+  <!-- ───── USERS TAB ───── -->
+  <section class="admin-panel" data-panel="users">
+    <div class="panel-head">
+      <div>
+        <h1 class="panel-title">Kullanıcılar</h1>
+        <p class="panel-sub"><span id="userCount">—</span> kayıtlı kullanıcı</p>
+      </div>
+    </div>
+    <div class="user-table-wrap">
+      <table class="user-table" id="userTable">
+        <thead>
+          <tr>
+            <th>Kullanıcı</th>
+            <th>E-posta</th>
+            <th>TikTok</th>
+            <th>Rol</th>
+            <th>Kayıt</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ───── STATS TAB ───── -->
+  <section class="admin-panel" data-panel="stats">
+    <div class="panel-head">
+      <div>
+        <h1 class="panel-title">Hızlı İstatistik</h1>
+        <p class="panel-sub">Sistem genel durumu</p>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-card-label">Toplam Mod</div>
+        <div class="stat-card-value" id="statMods">—</div>
+        <div class="stat-card-sub">aktif + pasif</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Aktif Mod</div>
+        <div class="stat-card-value" id="statActive">—</div>
+        <div class="stat-card-sub">listelenebilir</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">ZIP Yüklü</div>
+        <div class="stat-card-value" id="statUploaded">—</div>
+        <div class="stat-card-sub">indirilebilir mod</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Toplam Kullanıcı</div>
+        <div class="stat-card-value" id="statUsers">—</div>
+        <div class="stat-card-sub">kayıt</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ───── MOD EDITOR MODAL ───── -->
+<div class="modal-backdrop" id="modModal" hidden>
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2 id="modModalTitle">Mod Düzenle</h2>
+      <button class="modal-x" id="modModalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="modModalAlert" class="modal-alert" hidden></div>
+
+      <div class="grid-2">
+        <label class="field-block">
+          <span class="field-label">Başlık <em>*</em></span>
+          <input type="text" id="m-title">
+        </label>
+        <label class="field-block">
+          <span class="field-label">Oyun Adı</span>
+          <input type="text" id="m-gameTitle">
+        </label>
+        <label class="field-block">
+          <span class="field-label">Versiyon</span>
+          <input type="text" id="m-version" placeholder="1.0.0">
+        </label>
+        <label class="field-block">
+          <span class="field-label">Kategori</span>
+          <select id="m-category">
+            <option value="open-world">Açık Dünya</option>
+            <option value="fps">FPS</option>
+            <option value="battle-royale">Battle Royale</option>
+            <option value="moba">MOBA</option>
+            <option value="sandbox">Sandbox</option>
+            <option value="sports">Spor</option>
+            <option value="party">Parti</option>
+            <option value="other">Diğer</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="field-block">
+        <span class="field-label">Açıklama</span>
+        <textarea id="m-description" rows="3" placeholder="Yayıncılara modu kısaca tanıt…"></textarea>
+      </label>
+
+      <div class="field-block">
+        <span class="field-label">Kapak Görseli</span>
+        <div class="image-row">
+          <div class="image-preview" id="m-imagePreview">
+            <span>—</span>
+          </div>
+          <div class="image-controls">
+            <input type="file" id="m-imageFile" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+            <button class="btn-secondary" id="m-imagePick" type="button">📤 Görsel Yükle</button>
+            <input type="text" id="m-imageUrl" class="image-url" placeholder="…veya URL yapıştır">
+            <div class="image-hint" id="m-imageHint">Önce <b>Kaydet</b>'e bas, sonra yükle.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-block">
+        <span class="field-label">Mod ZIP Dosyası</span>
+        <div id="m-zipBox" class="zip-box">
+          <div class="zip-state" id="m-zipState">Önce mod metadata'sını kaydet, sonra ZIP yükle.</div>
+          <input type="file" id="m-zipFile" accept=".zip,application/zip" hidden>
+          <button class="btn-secondary" id="m-zipPick" type="button" disabled>📦 ZIP Seç</button>
+          <button class="btn-danger-ghost" id="m-zipDelete" type="button" hidden>ZIP Sil</button>
+        </div>
+        <div class="zip-progress" id="m-zipProg" hidden>
+          <div class="zip-progress-fill" id="m-zipProgFill"></div>
+          <div class="zip-progress-text" id="m-zipProgText">0%</div>
+        </div>
+      </div>
+
+      <label class="check-row">
+        <input type="checkbox" id="m-isActive" checked>
+        <span>Aktif — sitede listele</span>
+      </label>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn-danger" id="modDeleteBtn" hidden>Modu Sil</button>
+      <div class="flex-spacer"></div>
+      <button class="btn-secondary" id="modCancelBtn">Kapat</button>
+      <button class="btn-primary" id="modSaveBtn">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

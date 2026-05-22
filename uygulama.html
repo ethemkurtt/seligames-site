@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uygulama — SeliGame</title>
+<meta name="description" content="SeliGame masaüstü uygulamasının detaylı tanıtımı: hediye→tuş eşleme, overlay sistemi, mod kütüphanesi, subathon timer, çark ve daha fazlası.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/seligame.css">
+<link rel="stylesheet" href="css/uygulama.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="ambient">
+  <div class="amb-grid"></div>
+  <div class="amb-orb o1"></div>
+  <div class="amb-orb o2"></div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <a href="seligame.html" class="nav-logo">
+    <span class="nav-logo-mark">S</span>
+    <span>SeliGame
+      <span class="brand-tag">v1.0 · BETA</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="seligame.html">Ana Sayfa</a></li>
+    <li><a href="uygulama.html" class="active">Uygulama</a></li>
+    <li><a href="seligame.html#modlar">Modlar</a></li>
+    <li><a href="seligame.html#indir">İndir</a></li>
+  </ul>
+  <div class="nav-right" id="navRight">
+    <a href="giris-yap.html" class="nav-login">Giriş Yap</a>
+    <a href="uye-ol.html" class="nav-signup">Üye Ol</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="app-hero">
+  <div class="section-inner">
+    <div class="app-hero-grid">
+      <div class="app-hero-text">
+        <div class="section-eyebrow"><span class="label pink">// MASAÜSTÜ UYGULAMA</span></div>
+        <h1 class="display h1">
+          Yayını <span class="accent">canlandıran</span><br>
+          tek pencere.
+        </h1>
+        <p class="section-lead">
+          SeliGame masaüstü uygulaması, TikTok LIVE yayınını oyununa bağlar. Hediyeler oyuna tuş
+          basar, overlay'ler ekrana çıkar, modlar otomatik kurulur. Hepsi tek ekranda, kuruluma
+          5 dakika.
+        </p>
+        <div class="app-hero-cta">
+          <a href="seligame.html#indir" class="btn primary">
+            <span>Ücretsiz İndir</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#modules" class="btn ghost"><span>Özellikleri Gez</span></a>
+        </div>
+        <div class="app-hero-pills">
+          <span class="pill-os">🪟 Windows 10/11</span>
+          <span class="pill-os">🍎 macOS Apple Silicon</span>
+          <span class="pill-os">🍎 macOS Intel</span>
+          <span class="pill-os">₺0 / Ücretsiz</span>
+        </div>
+      </div>
+      <div class="app-hero-card">
+        <div class="card-screen">
+          <div class="card-titlebar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="card-title-text">SeliGame · TikTok LIVE Bağlı</span>
+          </div>
+          <div class="card-body">
+            <div class="event-row">
+              <span class="event-icon">🌹</span>
+              <span><b>kullanici_42</b> Gül gönderdi <span class="event-key">→ F2</span></span>
+            </div>
+            <div class="event-row">
+              <span class="event-icon">🚀</span>
+              <span><b>oyuncu_jr</b> Roket gönderdi <span class="event-key">→ Shift+R</span></span>
+            </div>
+            <div class="event-row">
+              <span class="event-icon">❤️</span>
+              <span><b>seliusta</b> 5 beğeni <span class="event-key">→ goal +5</span></span>
+            </div>
+            <div class="event-row">
+              <span class="event-icon">🦁</span>
+              <span><b>vipuser</b> Aslan gönderdi <span class="event-key">→ +60sn subathon</span></span>
+            </div>
+            <div class="event-row">
+              <span class="event-icon">🎁</span>
+              <span><b>yeniuser</b> Kalp gönderdi <span class="event-key">→ wheel spin</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section" id="how">
+  <div class="section-inner">
+    <div class="section-eyebrow"><span class="label cyan">// ÇALIŞMA PRENSİBİ</span></div>
+    <h2 class="display h2">
+      Hediye → tuş, <span class="accent">kurulum yok.</span>
+    </h2>
+    <p class="section-lead">
+      Üç katmanlı çalışır: TikTok'tan veri akışı, mod tarafında "F2 = blok at" tanımı, SeliGame'in
+      arasındaki köprü. Sen sadece "Gül → F2" diye işaretlersin.
+    </p>
+
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">01</div>
+        <h3>TikTok Live'a bağlan</h3>
+        <p>TikTok kullanıcı adını gir, "Bağlan"a bas. Eulerstream WebSocket üzerinden tüm event'ler (hediye, beğeni, yorum, takip) anlık akar.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">02</div>
+        <h3>Modu kur</h3>
+        <p>Mod kütüphanesinden seç, oyun klasörünü göster. ZIP otomatik açılır, oyuna entegre olur. Tikfinity benzeri konfig dosyaları içerebilir.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">03</div>
+        <h3>Hediye → tuş eşle</h3>
+        <p>Mod detayında her hediye için bir tuş veya tuş kombinasyonu ata: Gül → F2, Roket → Shift+R, Aslan → Ctrl+Alt+L gibi. 123 TikTok hediyesi destekli.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">04</div>
+        <h3>Yayını başlat</h3>
+        <p>"Bu Modu Başlat" tuşuna bas (veya F8 global hotkey). Oyunu öne al. Yayında hediye geldikçe oyuna tuş basılır, ses çalar, overlay'ler tetiklenir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULES ===== -->
+<section class="section" id="modules">
+  <div class="section-inner">
+    <div class="section-eyebrow"><span class="label pink">// MODÜLLER</span></div>
+    <h2 class="display h2">
+      Bütün <span class="accent">stüdyo</span> tek pencerede.
+    </h2>
+    <p class="section-lead">
+      Tikfinity + StreamElements + Lioranboard + OBS dock'ları — hepsi tek uygulama. Kurulum tek
+      installer, hesap tek hesap, hepsi senkronize.
+    </p>
+
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-icon">⌨️</div>
+        <h3>Hediye → Tuş Motoru</h3>
+        <p>OS düzeyinde keystroke simülasyonu. macOS'ta osascript, Windows'ta SendKeys, Linux'ta xdotool. repeatCount destekli (10 gül = 10 tuş basışı). Şifreli karakterler (Türkçe +ö, +Ç vb.) doğru çözümlenir.</p>
+        <div class="module-meta">300+ ms ortalama gecikme · 20 keystroke/sn üst sınır</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🎮</div>
+        <h3>Mod Kütüphanesi</h3>
+        <p>5+ mod hazır: City Tower, Infinite Pizza, PP Puzzle, Beyblade, Geliştirilmiş Harita Oyunu. Tek tıkla oyun klasörüne kurulur. Her mod kendi hediye-aksiyon haritasını saklar.</p>
+        <div class="module-meta">123 TikTok hediyesi · 5 platform · ücretsiz</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🎨</div>
+        <h3>OBS Overlay Sistemi</h3>
+        <p>Goal layers, gift alerts, leaderboards, last-X, event-feed, chat overlay, chart, subathon timer, wheel of actions — 9 çeşit overlay. Browser Source URL'i ile OBS'ye yapıştır.</p>
+        <div class="module-meta">9 overlay tipi · WebSocket canlı güncelleme</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">⏱️</div>
+        <h3>Subathon Timer</h3>
+        <p>Hediye geldikçe geri sayım eklenir: gül +5sn, roket +5dk gibi. Her hediye için ayrı saniye atayabilir, presetleri yükleyebilirsin. Browser source olarak yayına basılır.</p>
+        <div class="module-meta">Başlat/Duraklat/Sıfırla · özel hediye haritası</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🎡</div>
+        <h3>Şans Çarkı</h3>
+        <p>Belirli bir hediye geldiğinde çark döner, ağırlıklı rastgele dilim seçilir. Yayında izleyiciye sürpriz aksiyon. SVG tabanlı, 4 saniye animasyon, kazanan üstte gösterilir.</p>
+        <div class="module-meta">Hediye tetikli · özel dilim ağırlıkları</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🎁</div>
+        <h3>Hediye Tasarımcısı</h3>
+        <p>Köşe-bağlı 4 slotlu hediye düzenleyici. Hediye ikonları + Türkçe etiket + font/stroke/blur ile özelleştir. 16:9 transparent PNG olarak indir, OBS'ye direkt yapıştır.</p>
+        <div class="module-meta">10 font · auto-shrink yazı · şeffaf PNG</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🔊</div>
+        <h3>Hediye Ses Sistemi</h3>
+        <p>Her hediyeye özel MP3 ata veya tier-bazlı varsayılan ses kullan. Global ses sliderı, test butonu, her hediye için ses-önizleme.</p>
+        <div class="module-meta">Custom MP3 · tier presetleri · global volume</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🚀</div>
+        <h3>Oyun Başlatıcı</h3>
+        <p>Steam URI, .exe yolu, .bat dosyası — hepsini destekler. "Bu Modu Başlat"a basınca tanımlı oyun da otomatik açılır. Windows'ta `cmd /c start` ile detached spawn — SeliGame'i kapatsan da oyun çalışır.</p>
+        <div class="module-meta">steam:// · .exe · .bat · .app · özel komut</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">⚡</div>
+        <h3>Global Hotkey</h3>
+        <p>Uygulama arka planda olsa bile F8 (özelleştirilebilir) tuşuyla tüm modları başlat/durdur. Hızlı yayın kontrolü, oyunu öne alıp arkayı dert etmemek için.</p>
+        <div class="module-meta">F8 default · özel kombinasyon · arka plan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="section stats-strip">
+  <div class="section-inner">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-num">123</div><div class="stat-label">TikTok Hediyesi</div></div>
+      <div class="stat-item"><div class="stat-num">9</div><div class="stat-label">Overlay Tipi</div></div>
+      <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Hazır Mod</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Platform</div></div>
+      <div class="stat-item"><div class="stat-num">₺0</div><div class="stat-label">Fiyat</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <div class="section-eyebrow"><span class="label cyan">// SORULAR</span></div>
+    <h2 class="display h2">Sık merak <span class="accent">edilenler.</span></h2>
+
+    <div class="faq-grid">
+      <details class="faq-item">
+        <summary>Tamamen ücretsiz mi?</summary>
+        <p>Evet — beta süresince tüm özellikler ücretsiz. Hesap kaydı zorunlu çünkü her yayıncının kendi mod ayarları ve overlay link'leri var.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Oyun arka plandayken çalışır mı?</summary>
+        <p>Şu an oyun penceresi önde olmalı; OS keystroke API'leri yalnızca odakta olan pencereye gönderir. Background delivery için native helper (CGEventPost / PostMessage) ileride eklenecek.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Hangi oyunlar destekleniyor?</summary>
+        <p>Tuş tetikleme destekleyen her oyun. Mod kütüphanesinde GTA Chaos, City Tower, Infinite Pizza, PP Puzzle, Beyblade gibi yayıncı-dostu modlar var. Kendi modunla da çalışır — hediye tuşa basar, modun davranışı senin.</p>
+      </details>
+      <details class="faq-item">
+        <summary>macOS'ta neden Gizlilik izni istiyor?</summary>
+        <p>Sistem Ayarları → Gizlilik → Erişilebilirlik altından SeliGame'e izin vermen gerekir. Bu olmadan macOS keystroke'u oyuna iletmez. Tek seferlik kurulum.</p>
+      </details>
+      <details class="faq-item">
+        <summary>OBS ile nasıl çalışıyor?</summary>
+        <p>Her overlay için bir Browser Source URL alırsın. OBS'de Browser Source olarak ekle (1920×1080, refresh on scene active). WebSocket üzerinden canlı güncellenir.</p>
+      </details>
+      <details class="faq-item">
+        <summary>TikTok hesabıma erişim alıyor mu?</summary>
+        <p>Hayır. Sadece public canlı yayın akışını okur (Eulerstream üzerinden). Hesabına login olmaz, mesaj göndermez. TikTok kullanıcı adı sadece doğru yayını dinlemek için.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section app-cta">
+  <div class="section-inner">
+    <div class="app-cta-card">
+      <h2 class="display h2">
+        Yayını <span class="accent">canlandır</span>,<br>kuruluma 5 dakika.
+      </h2>
+      <p class="section-lead">
+        Hesabını oluştur, uygulamayı indir, ilk modunu yükle. Sonraki yayında tuş atamaların hazır.
+      </p>
+      <div class="app-cta-buttons">
+        <a href="uye-ol.html" class="btn primary">
+          <span>Ücretsiz Hesap Oluştur</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="seligame.html#indir" class="btn ghost"><span>Uygulamayı İndir</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER (compact) ===== -->
+<footer class="footer">
+  <div class="footer-bottom">
+    <div>© 2026 SeliGame · <a href="seligame.html">Ana Sayfa</a> · <a href="giris-yap.html">Giriş</a> · <a href="uye-ol.html">Üye Ol</a></div>
+    <div class="footer-version">v1.0 · BETA</div>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/uygulama.js"></script>
+
+</body>
+</html>
